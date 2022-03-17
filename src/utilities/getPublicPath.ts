@@ -13,7 +13,7 @@ export const getPublicPath = (stats: Stats): PublicPath => {
   } = stats;
 
   const outputPath = compilation.getPath(
-    compilation.outputOptions.path || '',
+    compilation.outputOptions.path ?? '',
   );
 
   const publicPath = compilation.outputOptions.publicPath ?
