@@ -28,6 +28,7 @@
     "@types/node": "^10.0.0",
     "@types/webpack": "^5.28.0",
     "ava": "^3.15.0",
+    "compression-webpack-plugin": "^9.2.0",
     "coveralls": "^3.1.1",
     "eslint": "^8.10.0",
     "eslint-config-canonical": "^33.0.1",
