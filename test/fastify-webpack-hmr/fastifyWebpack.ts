@@ -69,3 +69,40 @@ test('serves brotli compressed assets when available', async (t) => {
 
   t.is(response.headers['content-encoding'], 'br');
 });
+
+test('serves gzip compressed assets when available', async (t) => {
+  const app = createFastify();
+
+  const compiler = webpack({
+    entry: path.resolve(__dirname, '../fixtures/index.js'),
+    output: {
+      filename: 'main.js',
+      path: path.resolve(__dirname, '/dist'),
+      publicPath: '/',
+    },
+    plugins: [
+      new CompressionPlugin({
+        algorithm: 'gzip',
+        deleteOriginalAssets: false,
+        filename: '[path][base].gz',
+        minRatio: Number.POSITIVE_INFINITY,
+        test: /\.js$/u,
+        threshold: 0,
+      }),
+    ],
+  });
+
+  void app.register(fastifyWebpack, {
+    compiler,
+  });
+
+  const serverAddress = await app.listen(0);
+
+  const response = await got(serverAddress + '/main.js', {
+    headers: {
+      'accept-encoding': 'gzip',
+    },
+  });
+
+  t.is(response.headers['content-encoding'], 'gzip');
+});
