@@ -1,0 +1,72 @@
+{
+  "author": {
+    "email": "gajus@gajus.com",
+    "name": "Gajus Kuizinas",
+    "url": "http://gajus.com"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "test/fastify-webpack-hmr/**/*"
+    ],
+    "require": [
+      "ts-node/register/transpile-only"
+    ]
+  },
+  "dependencies": {
+    "fastify-plugin": "^3.0.1",
+    "memfs": "^3.4.1",
+    "mime-types": "^2.1.35",
+    "negotiator": "^0.6.3",
+    "roarr": "^7.0.4",
+    "serialize-error": "^8.1.0"
+  },
+  "description": "A Fastify plugin for serving files emitted by Webpack.",
+  "devDependencies": {
+    "@types/node": "^10.0.0",
+    "@types/webpack": "^5.28.0",
+    "ava": "^3.15.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.10.0",
+    "eslint-config-canonical": "^33.0.1",
+    "fastify": "^3.27.4",
+    "gitdown": "^3.1.4",
+    "got": "^11.8.3",
+    "husky": "^7.0.2",
+    "nyc": "^15.1.0",
+    "semantic-release": "^17.4.7",
+    "sinon": "^11.1.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3",
+    "webpack": "^5.70.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test && npm run build"
+    }
+  },
+  "keywords": [
+    "fastify",
+    "webpack"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "name": "webpack-fastify-hmr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gajus/webpack-fastify-hmr"
+  },
+  "scripts": {
+    "build": "rm -fr ./dist && tsc",
+    "generate-readme": "gitdown ./.README/README.md --output-file ./README.md",
+    "lint": "eslint ./src ./test && tsc --noEmit",
+    "test": "NODE_ENV=test ava --serial --verbose"
+  },
+  "typings": "./dist/src/index.d.ts",
+  "version": "1.0.0"
+}

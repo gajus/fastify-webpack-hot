@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": "*.ts",
+      "extends": [
+        "canonical",
+        "canonical/typescript"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "import/no-named-as-default-member": 0
+      }
+    }
+  ]
+}
