@@ -54,7 +54,9 @@ export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
   let statsPromise: DeferredPromise<Stats> = defer();
 
   compiler.hooks.watchRun.tap(MODULE_NAME, () => {
-    statsPromise = defer();
+    if (statsPromise.resolved) {
+      statsPromise = defer();
+    }
 
     // if (compiler.modifiedFiles) {
     //   const changedFiles = Array.from(compiler.modifiedFiles, (file) => {
