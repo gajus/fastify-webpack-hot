@@ -58,14 +58,6 @@ export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
       statsPromise = defer();
     }
 
-    // if (compiler.modifiedFiles) {
-    //   const changedFiles = Array.from(compiler.modifiedFiles, (file) => {
-    //     return `\n  ${file}`;
-    //   }).join('');
-    //   console.log('===============================');
-    //   console.log('FILES CHANGED:', changedFiles);
-    //   console.log('===============================');
-    // }
 
     log.debug('building a webpack bundle');
   });
