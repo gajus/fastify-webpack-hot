@@ -58,6 +58,13 @@ export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
       statsPromise = defer();
     }
 
+    if (compiler.modifiedFiles) {
+      const modifiedFiles = Array.from(compiler.modifiedFiles);
+
+      log.info({
+        modifiedFiles,
+      }, 'modified files');
+    }
 
     log.debug('building a webpack bundle');
   });

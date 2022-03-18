@@ -11,6 +11,9 @@
     "files": [
       "test/fastify-webpack-hmr/**/*"
     ],
+    "ignoredByWatcher": [
+      "test/fixtures/**/*"
+    ],
     "require": [
       "ts-node/register/transpile-only"
     ]
@@ -20,7 +23,7 @@
     "memfs": "^3.4.1",
     "mime-types": "^2.1.35",
     "negotiator": "^0.6.3",
-    "roarr": "^7.0.4",
+    "roarr": "^7.10.0",
     "serialize-error": "^8.1.0"
   },
   "description": "A Fastify plugin for serving files emitted by Webpack.",

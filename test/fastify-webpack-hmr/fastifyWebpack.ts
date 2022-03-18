@@ -1,8 +1,18 @@
+import fs from 'fs';
 import path from 'path';
+import {
+  setTimeout,
+} from 'timers/promises';
 import test from 'ava';
 import CompressionPlugin from 'compression-webpack-plugin';
 import createFastify from 'fastify';
 import got from 'got';
+import type {
+  Message,
+} from 'roarr';
+import {
+  Roarr,
+} from 'roarr';
 import webpack from 'webpack';
 import {
   fastifyWebpack,
@@ -105,4 +115,55 @@ test('serves gzip compressed assets when available', async (t) => {
   });
 
   t.is(response.headers['content-encoding'], 'gzip');
+});
+
+test('logs modified files', async (t) => {
+  const app = createFastify();
+
+  const compiler = webpack({
+    entry: path.resolve(__dirname, '../fixtures/index.js'),
+    output: {
+      filename: 'main.js',
+      path: path.resolve(__dirname, '/dist'),
+      publicPath: '/',
+    },
+    plugins: [
+      new CompressionPlugin({
+        algorithm: 'gzip',
+        deleteOriginalAssets: false,
+        filename: '[path][base].gz',
+        minRatio: Number.POSITIVE_INFINITY,
+        test: /\.js$/u,
+        threshold: 0,
+      }),
+    ],
+  });
+
+  void app.register(fastifyWebpack, {
+    compiler,
+  });
+
+  const messages: Message[] = [];
+
+  void Roarr.adopt(async () => {
+    await app.listen(0);
+  }, (message) => {
+    messages.push(message);
+
+    return message;
+  });
+
+  fs.utimesSync(path.resolve(__dirname, '../fixtures/index.js'), new Date(), new Date());
+
+  await setTimeout(1_000);
+
+  const modifiedFilesLogMessage = messages.find((message) => {
+    return message.message === 'modified files';
+  });
+
+  if (!modifiedFilesLogMessage) {
+    throw new Error('log message not found');
+  }
+
+  t.true(Array.isArray(modifiedFilesLogMessage.context.modifiedFiles));
 });
