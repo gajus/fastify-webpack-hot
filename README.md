@@ -1,17 +1,17 @@
-<a name="user-content-webpack-fastify-hmr"></a>
-<a name="webpack-fastify-hmr"></a>
-# webpack-fastify-hmr
+<a name="user-content-fastify-webpack"></a>
+<a name="fastify-webpack"></a>
+# fastify-webpack
 
-[![Travis build status](http://img.shields.io/travis/gajus/webpack-fastify-hmr/master.svg?style=flat-square)](https://travis-ci.com/gajus/webpack-fastify-hmr)
-[![Coveralls](https://img.shields.io/coveralls/gajus/webpack-fastify-hmr.svg?style=flat-square)](https://coveralls.io/github/gajus/webpack-fastify-hmr)
-[![NPM version](http://img.shields.io/npm/v/webpack-fastify-hmr.svg?style=flat-square)](https://www.npmjs.org/package/webpack-fastify-hmr)
+[![Travis build status](http://img.shields.io/travis/gajus/fastify-webpack/master.svg?style=flat-square)](https://travis-ci.com/gajus/fastify-webpack)
+[![Coveralls](https://img.shields.io/coveralls/gajus/fastify-webpack.svg?style=flat-square)](https://coveralls.io/github/gajus/fastify-webpack)
+[![NPM version](http://img.shields.io/npm/v/fastify-webpack.svg?style=flat-square)](https://www.npmjs.org/package/fastify-webpack)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 [![Twitter Follow](https://img.shields.io/twitter/follow/kuizinas.svg?style=social&label=Follow)](https://twitter.com/kuizinas)
 
 A [Fastify](https://github.com/fastify/fastify) plugin for serving files emitted by [Webpack](https://github.com/webpack/webpack).
 
-<a name="user-content-webpack-fastify-hmr-setup"></a>
-<a name="webpack-fastify-hmr-setup"></a>
+<a name="user-content-fastify-webpack-setup"></a>
+<a name="fastify-webpack-setup"></a>
 ## Setup
 
 ```ts
@@ -27,8 +27,8 @@ void app.register(fastifyWebpack, {
 });
 ```
 
-<a name="user-content-webpack-fastify-hmr-response-compression"></a>
-<a name="webpack-fastify-hmr-response-compression"></a>
+<a name="user-content-fastify-webpack-response-compression"></a>
+<a name="fastify-webpack-response-compression"></a>
 ## Response Compression
 
 This plugin is compatible with [`compression-webpack-plugin`](https://www.npmjs.com/package/compression-webpack-plugin), i.e. This plugin will serve compressed files if the following conditions are true:
@@ -54,8 +54,8 @@ new CompressionPlugin({
 
 Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
 
-<a name="user-content-webpack-fastify-hmr-difference-from-webpack-dev-server"></a>
-<a name="webpack-fastify-hmr-difference-from-webpack-dev-server"></a>
+<a name="user-content-fastify-webpack-difference-from-webpack-dev-server"></a>
+<a name="fastify-webpack-difference-from-webpack-dev-server"></a>
 ## Difference from webpack-dev-server
 
 * Does not allow to override default HTTP methods (GET, HEAD).
@@ -68,8 +68,8 @@ Note: You may also try using `fastify-compress`, however, beware of the outstand
 
 All of the above are relatively straightforward to implement, however, I didn't have a use-case for them. If you have a use-case, please raise a PR.
 
-<a name="user-content-webpack-fastify-hmr-debugging"></a>
-<a name="webpack-fastify-hmr-debugging"></a>
+<a name="user-content-fastify-webpack-debugging"></a>
+<a name="fastify-webpack-debugging"></a>
 ## Debugging
 
 This project uses [`roarr`](https://www.npmjs.com/package/roarr) logger to output the program's state.

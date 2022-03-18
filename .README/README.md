@@ -1,8 +1,8 @@
-# webpack-fastify-hmr
+# fastify-webpack
 
-[![Travis build status](http://img.shields.io/travis/gajus/webpack-fastify-hmr/master.svg?style=flat-square)](https://travis-ci.com/gajus/webpack-fastify-hmr)
-[![Coveralls](https://img.shields.io/coveralls/gajus/webpack-fastify-hmr.svg?style=flat-square)](https://coveralls.io/github/gajus/webpack-fastify-hmr)
-[![NPM version](http://img.shields.io/npm/v/webpack-fastify-hmr.svg?style=flat-square)](https://www.npmjs.org/package/webpack-fastify-hmr)
+[![Travis build status](http://img.shields.io/travis/gajus/fastify-webpack/master.svg?style=flat-square)](https://travis-ci.com/gajus/fastify-webpack)
+[![Coveralls](https://img.shields.io/coveralls/gajus/fastify-webpack.svg?style=flat-square)](https://coveralls.io/github/gajus/fastify-webpack)
+[![NPM version](http://img.shields.io/npm/v/fastify-webpack.svg?style=flat-square)](https://www.npmjs.org/package/fastify-webpack)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 [![Twitter Follow](https://img.shields.io/twitter/follow/kuizinas.svg?style=social&label=Follow)](https://twitter.com/kuizinas)
 
