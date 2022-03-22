@@ -27,6 +27,12 @@ void app.register(fastifyWebpack, {
 });
 ```
 
+<a name="user-content-fastify-webpack-examples"></a>
+<a name="fastify-webpack-examples"></a>
+## Examples
+
+* [TypeScript, Fastify, Webpack, React HRM example](./examples/react)
+
 <a name="user-content-fastify-webpack-response-compression"></a>
 <a name="fastify-webpack-response-compression"></a>
 ## Response Compression

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "es2022",
+    "target": "es5",
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "."
+  ]
+}

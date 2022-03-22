@@ -70,9 +70,13 @@ export const getFilenameFromUrl = (outputFileSystem, stats, url) => {
     try {
       fsStats = outputFileSystem.statSync(filename);
     } catch (error) {
-      log.trace({
-        error: serializeError(error),
-      }, 'could not stat path');
+      if (error.message.includes('no such file or directory')) {
+        log.trace('no such file or directory %s', filename);
+      } else {
+        log.trace({
+          error: serializeError(error),
+        }, 'could not stat path');
+      }
 
       return null;
     }
