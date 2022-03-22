@@ -20,17 +20,18 @@ import {
 } from './Logger';
 import {
   createSyncEvents,
-} from './factories/createSyncEvents';
+} from './factories';
 import type {
   SyncEvent,
 } from './types';
 import {
-  type DeferredPromise,
   defer,
-} from './utilities/defer';
-import {
+  formatServerEvent,
   getFilenameFromUrl,
-} from './utilities/getFilenameFromUrl';
+} from './utilities';
+import {
+  type DeferredPromise,
+} from './utilities/defer';
 
 type EventHandlers = {
   sync: (event: SyncEvent) => void,
@@ -39,7 +40,7 @@ type EventHandlers = {
 const MODULE_NAME = 'fastify-webpack';
 
 const log = Logger.child({
-  namespace: 'fastifyWebpack',
+  namespace: 'fastify-webpack',
 });
 
 declare module 'fastify' {
@@ -64,13 +65,6 @@ export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
 
   let statsPromise: DeferredPromise<Stats> = defer();
 
-  // compiler.hooks.done.tap(MODULE_NAME, () => {
-
-  //   eventEmitter.emit('sync', {
-  //     time: Date.now(),
-  //   });
-  // });
-
   compiler.hooks.watchRun.tap(MODULE_NAME, () => {
     if (statsPromise.resolved) {
       statsPromise = defer();
@@ -81,17 +75,18 @@ export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
 
       log.info({
         modifiedFiles,
-      }, 'modified files');
+      }, 'building a webpack bundle');
+    } else {
+      log.info('building a webpack bundle');
     }
-
-    log.debug('building a webpack bundle');
   });
 
   const outputFileSystem = createFsFromVolume(new Volume());
 
   compiler.outputFileSystem = outputFileSystem;
 
-  compiler.watch({
+  const watching = compiler.watch({
+    aggregateTimeout: 500,
     poll: false,
   }, (error, nextStats) => {
     if (error) {
@@ -126,7 +121,7 @@ export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
     reply.raw.writeHead(200, headers);
 
     const sync = (event) => {
-      reply.raw.write('event: sync\ndata: ' + JSON.stringify(event) + '\n\n');
+      void reply.raw.write(formatServerEvent('sync', event));
     };
 
     eventEmitter.addListener('sync', sync);
@@ -174,5 +169,11 @@ export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
         void reply.send(outputFileSystem.readFileSync(fileName));
       }
     }
+  });
+
+  fastify.addHook('onClose', (instance, done) => {
+    watching.close(() => {
+      done();
+    });
   });
 });
