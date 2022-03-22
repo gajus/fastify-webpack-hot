@@ -23,6 +23,10 @@ void app.register(fastifyWebpack, {
 });
 ```
 
+## Examples
+
+* [TypeScript, Fastify, Webpack, React HRM example](./examples/react)
+
 ## Response Compression
 
 This plugin is compatible with [`compression-webpack-plugin`](https://www.npmjs.com/package/compression-webpack-plugin), i.e. This plugin will serve compressed files if the following conditions are true:

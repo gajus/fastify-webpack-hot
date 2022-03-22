@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es2022",
+    "lib": [
+      "dom"
+    ]
+  },
+  "include": [
+    "."
+  ]
+}
