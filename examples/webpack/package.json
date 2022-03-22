@@ -2,8 +2,10 @@
   "dependencies": {
     "@roarr/cli": "^5.3.2",
     "@types/node": "^10.0.0",
-    "@types/webpack": "^5.28.0",
     "@types/webpack-env": "^1.16.3",
+    "@types/webpack": "^5.28.0",
+    "eslint-config-canonical": "^33.0.1",
+    "eslint": "^8.11.0",
     "fastify": "^3.27.4",
     "ts-loader": "^9.2.8",
     "ts-node": "^10.2.1",
@@ -13,9 +15,5 @@
   "private": true,
   "scripts": {
     "start": "ts-node --transpile-only server/server.ts | roarr"
-  },
-  "devDependencies": {
-    "eslint": "^8.11.0",
-    "eslint-config-canonical": "^33.0.1"
   }
 }
