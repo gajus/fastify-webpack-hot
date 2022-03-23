@@ -15,8 +15,9 @@ A [Fastify](https://github.com/fastify/fastify) plugin for serving files emitted
         * [Accessing Webpack Stats](#user-content-fastify-webpack-hot-recipes-accessing-webpack-stats)
         * [Accessing Output File System](#user-content-fastify-webpack-hot-recipes-accessing-output-file-system)
         * [Compressing Response](#user-content-fastify-webpack-hot-recipes-compressing-response)
-    * [Difference from webpack-dev-server](#user-content-fastify-webpack-hot-difference-from-webpack-dev-server)
+    * [Difference from `webpack-dev-server` and `webpack-hot-middleware`](#user-content-fastify-webpack-hot-difference-from-webpack-dev-server-and-webpack-hot-middleware)
     * [Troubleshooting](#user-content-fastify-webpack-hot-troubleshooting)
+        * [Browser Logging](#user-content-fastify-webpack-hot-troubleshooting-browser-logging)
         * [Node.js Logging](#user-content-fastify-webpack-hot-troubleshooting-node-js-logging)
 
 
@@ -136,24 +137,35 @@ new CompressionPlugin({
 
 Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
 
-<a name="user-content-fastify-webpack-hot-difference-from-webpack-dev-server"></a>
-<a name="fastify-webpack-hot-difference-from-webpack-dev-server"></a>
-## Difference from webpack-dev-server
+<a name="user-content-fastify-webpack-hot-difference-from-webpack-dev-server-and-webpack-hot-middleware"></a>
+<a name="fastify-webpack-hot-difference-from-webpack-dev-server-and-webpack-hot-middleware"></a>
+## Difference from <code>webpack-dev-server</code> and <code>webpack-hot-middleware</code>
 
-* Supports [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement).
-* Does not allow to override default HTTP methods (GET, HEAD).
-* Does not allow to provide custom headers.
-* Does not allow to create an index.
-* Does not support [`serverSideRender`](https://github.com/webpack/webpack-dev-middleware#serversiderender)
-* Does not support [`writeToDisk`](https://github.com/webpack/webpack-dev-middleware#writetodisk)
-* Does not support [`MultiCompiler`](https://webpack.js.org/api/node/#multicompiler)
-* Does not support [`Accept-Ranges`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Ranges)
+`webpack-dev-server` and `webpack-hot-middleware` were built for [express](https://npmjs.com/package/express) framework and as such they require compatibility plugins to work with Fastify. Additionally, both libraries are being maintained with intent to support legacy webpack versions (all the way to webpack v1). As a result, they contain a lot of bloat that makes them slower and harder to maintain.
 
-All of the above are relatively straightforward to implement, however, I didn't have a use-case for them. If you have a use-case, please raise a PR.
+`fastify-webpack-hot` is built from the ground up leveraging the latest APIs of Fastify and webpack, and it encompasses functionality of both libraries. It is faster and easier to maintain.
 
 <a name="user-content-fastify-webpack-hot-troubleshooting"></a>
 <a name="fastify-webpack-hot-troubleshooting"></a>
 ## Troubleshooting
+
+<a name="user-content-fastify-webpack-hot-troubleshooting-browser-logging"></a>
+<a name="fastify-webpack-hot-troubleshooting-browser-logging"></a>
+### Browser Logging
+
+This project uses [`roarr`](https://www.npmjs.com/package/roarr) logger to output the application's state.
+
+In order to output logs in browser, you need to provide output interface. The easiest way of doing it is by including [`@roarr/browser-log-writer`](https://github.com/gajus/roarr-browser-log-writer) in your project. 
+
+```ts
+import '@roarr/browser-log-writer/init';
+```
+
+Afterwards, to output all logs set `ROARR_LOG=true` in `localStorage`:
+
+```ts
+localStorage.setItem('ROARR_LOG', 'true');
+```
 
 <a name="user-content-fastify-webpack-hot-troubleshooting-node-js-logging"></a>
 <a name="fastify-webpack-hot-troubleshooting-node-js-logging"></a>
