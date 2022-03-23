@@ -3,5 +3,5 @@ import {
 } from 'roarr';
 
 export const Logger = Roarr.child({
-  package: 'fastify-webpack',
+  package: 'fastify-webpack-hot',
 });

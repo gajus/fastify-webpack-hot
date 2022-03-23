@@ -18,4 +18,4 @@ For more context, refer to [Webpack Hot Module Replacement documentation](https:
 The example includes quite a few elements, however, in order to replicate the HMR behaviour, you only need to:
 
 1. Add `HotModuleReplacementPlugin` Webpack plugin
-1. Add `fastify-webpack/client` Webpack entry script
+1. Add `fastify-webpack-hot/client` Webpack entry script

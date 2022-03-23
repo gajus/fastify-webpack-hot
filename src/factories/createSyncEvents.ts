@@ -36,6 +36,7 @@ export const createSyncEvents = (stats: Stats): SyncEvent[] => {
   const bundles = extractBundles(
     stats.toJson({
       all: false,
+      assets: true,
       cached: true,
       children: true,
       hash: true,
@@ -50,6 +51,7 @@ export const createSyncEvents = (stats: Stats): SyncEvent[] => {
     }
 
     syncEvents.push({
+      assets: bundleStats.assets ?? [],
       errors: bundleStats.errors ?? [],
       hash: bundleStats.hash,
       modules: buildModuleMap(bundleStats.modules),

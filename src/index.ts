@@ -37,10 +37,10 @@ type EventHandlers = {
   sync: (event: SyncEvent) => void,
 };
 
-const MODULE_NAME = 'fastify-webpack';
+const MODULE_NAME = 'fastify-webpack-hot';
 
 const log = Logger.child({
-  namespace: 'fastify-webpack',
+  namespace: 'fastify-webpack-hot',
 });
 
 declare module 'fastify' {

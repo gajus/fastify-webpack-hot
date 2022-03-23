@@ -1,28 +1,28 @@
-<a name="user-content-fastify-webpack"></a>
-<a name="fastify-webpack"></a>
-# fastify-webpack
+<a name="user-content-fastify-webpack-hot"></a>
+<a name="fastify-webpack-hot"></a>
+# fastify-webpack-hot
 
-[![Travis build status](http://img.shields.io/travis/gajus/fastify-webpack/master.svg?style=flat-square)](https://travis-ci.com/gajus/fastify-webpack)
-[![Coveralls](https://img.shields.io/coveralls/gajus/fastify-webpack.svg?style=flat-square)](https://coveralls.io/github/gajus/fastify-webpack)
-[![NPM version](http://img.shields.io/npm/v/fastify-webpack.svg?style=flat-square)](https://www.npmjs.org/package/fastify-webpack)
+[![Travis build status](http://img.shields.io/travis/gajus/fastify-webpack-hot/master.svg?style=flat-square)](https://travis-ci.com/gajus/fastify-webpack-hot)
+[![Coveralls](https://img.shields.io/coveralls/gajus/fastify-webpack-hot.svg?style=flat-square)](https://coveralls.io/github/gajus/fastify-webpack-hot)
+[![NPM version](http://img.shields.io/npm/v/fastify-webpack-hot.svg?style=flat-square)](https://www.npmjs.org/package/fastify-webpack-hot)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 [![Twitter Follow](https://img.shields.io/twitter/follow/kuizinas.svg?style=social&label=Follow)](https://twitter.com/kuizinas)
 
 A [Fastify](https://github.com/fastify/fastify) plugin for serving files emitted by [Webpack](https://github.com/webpack/webpack) with Hot Module Replacement (HMR).
 
-<a name="user-content-fastify-webpack-basic-hmr-setup"></a>
-<a name="fastify-webpack-basic-hmr-setup"></a>
+<a name="user-content-fastify-webpack-hot-basic-hmr-setup"></a>
+<a name="fastify-webpack-hot-basic-hmr-setup"></a>
 ## Basic HMR Setup
 
 ```ts
 import webpack from 'webpack';
 import {
   fastifyWebpack,
-} from 'fastify-webpack';
+} from 'fastify-webpack-hot';
 
 const compiler = webpack({
   entry: [
-    'fastify-webpack/client',
+    'fastify-webpack-hot/client',
     path.resolve(__dirname, '../app/main.js'),
   ],
   mode: 'development',
@@ -37,15 +37,15 @@ void app.register(fastifyWebpack, {
 
 ```
 
-<a name="user-content-fastify-webpack-examples"></a>
-<a name="fastify-webpack-examples"></a>
+<a name="user-content-fastify-webpack-hot-examples"></a>
+<a name="fastify-webpack-hot-examples"></a>
 ## Examples
 
 * [TypeScript, Fastify and Webpack HRM example](./examples/webpack) (uses [Webpack Hot Module Replacement API](https://webpack.js.org/api/hot-module-replacement/))
 * [TypeScript, Fastify, Webpack and React HRM example](./examples/react) (uses [`ReactRefreshWebpackPlugin`](https://github.com/pmmmwh/react-refresh-webpack-plugin))
 
-<a name="user-content-fastify-webpack-response-compression"></a>
-<a name="fastify-webpack-response-compression"></a>
+<a name="user-content-fastify-webpack-hot-response-compression"></a>
+<a name="fastify-webpack-hot-response-compression"></a>
 ## Response Compression
 
 This plugin is compatible with [`compression-webpack-plugin`](https://www.npmjs.com/package/compression-webpack-plugin), i.e. This plugin will serve compressed files if the following conditions are true:
@@ -71,8 +71,8 @@ new CompressionPlugin({
 
 Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
 
-<a name="user-content-fastify-webpack-difference-from-webpack-dev-server"></a>
-<a name="fastify-webpack-difference-from-webpack-dev-server"></a>
+<a name="user-content-fastify-webpack-hot-difference-from-webpack-dev-server"></a>
+<a name="fastify-webpack-hot-difference-from-webpack-dev-server"></a>
 ## Difference from webpack-dev-server
 
 * Supports [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement).
@@ -86,8 +86,8 @@ Note: You may also try using `fastify-compress`, however, beware of the outstand
 
 All of the above are relatively straightforward to implement, however, I didn't have a use-case for them. If you have a use-case, please raise a PR.
 
-<a name="user-content-fastify-webpack-debugging"></a>
-<a name="fastify-webpack-debugging"></a>
+<a name="user-content-fastify-webpack-hot-debugging"></a>
+<a name="fastify-webpack-hot-debugging"></a>
 ## Debugging
 
 This project uses [`roarr`](https://www.npmjs.com/package/roarr) logger to output the program's state.

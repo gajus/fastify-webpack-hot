@@ -18,4 +18,4 @@ The example includes quite a few elements, however, in order to replicate React 
 1. Add `HotModuleReplacementPlugin` Webpack plugin
 1. Add `ReactRefreshWebpackPlugin` Webpack plugin
 1. Add `ReactRefreshTypeScript` TypeScript transform
-1. Add `fastify-webpack/client` Webpack entry script
+1. Add `fastify-webpack-hot/client` Webpack entry script

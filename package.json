@@ -9,7 +9,7 @@
       "ts"
     ],
     "files": [
-      "test/fastify-webpack/**/*"
+      "test/fastify-webpack-hot/**/*"
     ],
     "ignoredByWatcher": [
       "test/fixtures/**/*"
@@ -64,10 +64,10 @@
   ],
   "license": "BSD-3-Clause",
   "main": "./dist/index.js",
-  "name": "fastify-webpack",
+  "name": "fastify-webpack-hot",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gajus/fastify-webpack"
+    "url": "https://github.com/gajus/fastify-webpack-hot"
   },
   "scripts": {
     "build": "rm -fr ./dist && tsc && webpack",

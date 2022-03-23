@@ -11,7 +11,7 @@ const main = async () => {
   const compiler = webpack({
     devtool: 'source-map',
     entry: [
-      // This would be `fastify-webpack/client` in a regular application.
+      // This would be `fastify-webpack-hot/client` in a regular application.
       path.resolve(__dirname, '../../../dist/client.js'),
       path.resolve(__dirname, '../app/main.ts'),
     ],
