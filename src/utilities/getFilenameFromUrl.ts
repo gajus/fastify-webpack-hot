@@ -1,8 +1,8 @@
-import path from 'path';
-import querystring from 'querystring';
+import path from 'node:path';
+import querystring from 'node:querystring';
 import {
   parse,
-} from 'url';
+} from 'node:url';
 import {
   serializeError,
 } from 'serialize-error';

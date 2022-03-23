@@ -1,8 +1,8 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import {
   setTimeout,
-} from 'timers/promises';
+} from 'node:timers/promises';
 import test from 'ava';
 import CompressionPlugin from 'compression-webpack-plugin';
 import createFastify from 'fastify';

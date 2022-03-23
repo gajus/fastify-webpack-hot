@@ -5,6 +5,7 @@
       "files": "*.ts",
       "extends": [
         "canonical",
+        "canonical/node",
         "canonical/typescript"
       ],
       "parserOptions": {
