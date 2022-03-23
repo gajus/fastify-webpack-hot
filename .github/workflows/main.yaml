@@ -16,6 +16,8 @@ jobs:
       - run: npm run test
       - run: npm run build
       - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     timeout-minutes: 10
 name: Test, build and release
 on:
