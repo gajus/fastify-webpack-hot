@@ -35,6 +35,8 @@ All you need to enable [Webpack Hot Module Replacement](https://webpack.js.org/a
 * Enable `HotModuleReplacementPlugin` Webpack plugin
 * Prepend `fastify-webpack-hot/client` entry script
 
+Example:
+
 ```ts
 import webpack from 'webpack';
 import {
