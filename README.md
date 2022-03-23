@@ -9,21 +9,31 @@
 A [Fastify](https://github.com/fastify/fastify) plugin for serving files emitted by [Webpack](https://github.com/webpack/webpack) with Hot Module Replacement (HMR).
 
 * [fastify-webpack-hot 🔥](#user-content-fastify-webpack-hot)
-    * [Basic HMR Setup](#user-content-fastify-webpack-hot-basic-hmr-setup)
-    * [Examples](#user-content-fastify-webpack-hot-examples)
     * [Recipes](#user-content-fastify-webpack-hot-recipes)
+        * [Basic HMR Setup](#user-content-fastify-webpack-hot-recipes-basic-hmr-setup)
         * [Accessing Webpack Stats](#user-content-fastify-webpack-hot-recipes-accessing-webpack-stats)
         * [Accessing Output File System](#user-content-fastify-webpack-hot-recipes-accessing-output-file-system)
         * [Compressing Response](#user-content-fastify-webpack-hot-recipes-compressing-response)
+    * [Examples](#user-content-fastify-webpack-hot-examples)
     * [Difference from `webpack-dev-server` and `webpack-hot-middleware`](#user-content-fastify-webpack-hot-difference-from-webpack-dev-server-and-webpack-hot-middleware)
     * [Troubleshooting](#user-content-fastify-webpack-hot-troubleshooting)
         * [Browser Logging](#user-content-fastify-webpack-hot-troubleshooting-browser-logging)
         * [Node.js Logging](#user-content-fastify-webpack-hot-troubleshooting-node-js-logging)
 
 
-<a name="user-content-fastify-webpack-hot-basic-hmr-setup"></a>
-<a name="fastify-webpack-hot-basic-hmr-setup"></a>
-## Basic HMR Setup
+<a name="user-content-fastify-webpack-hot-recipes"></a>
+<a name="fastify-webpack-hot-recipes"></a>
+## Recipes
+
+<a name="user-content-fastify-webpack-hot-recipes-basic-hmr-setup"></a>
+<a name="fastify-webpack-hot-recipes-basic-hmr-setup"></a>
+### Basic HMR Setup
+
+All you need to enable [Webpack Hot Module Replacement](https://webpack.js.org/api/hot-module-replacement/) is:
+
+* Register `fastify-webpack-hot` Fastify plugin
+* Enable `HotModuleReplacementPlugin` Webpack plugin
+* Prepend `fastify-webpack-hot/client` entry script
 
 ```ts
 import webpack from 'webpack';
@@ -48,16 +58,7 @@ void app.register(fastifyWebpackHot, {
 
 ```
 
-<a name="user-content-fastify-webpack-hot-examples"></a>
-<a name="fastify-webpack-hot-examples"></a>
-## Examples
-
-* [TypeScript, Fastify and Webpack HRM example](./examples/webpack) (uses [Webpack Hot Module Replacement API](https://webpack.js.org/api/hot-module-replacement/))
-* [TypeScript, Fastify, Webpack and React HRM example](./examples/react) (uses [`ReactRefreshWebpackPlugin`](https://github.com/pmmmwh/react-refresh-webpack-plugin))
-
-<a name="user-content-fastify-webpack-hot-recipes"></a>
-<a name="fastify-webpack-hot-recipes"></a>
-## Recipes
+For more thorough instructions, refer to the [examples](#user-content-examples).
 
 <a name="user-content-fastify-webpack-hot-recipes-accessing-webpack-stats"></a>
 <a name="fastify-webpack-hot-recipes-accessing-webpack-stats"></a>
@@ -136,6 +137,13 @@ new CompressionPlugin({
 ```
 
 Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
+
+<a name="user-content-fastify-webpack-hot-examples"></a>
+<a name="fastify-webpack-hot-examples"></a>
+## Examples
+
+* [TypeScript, Fastify and Webpack HRM example](./examples/webpack) (uses [Webpack Hot Module Replacement API](https://webpack.js.org/api/hot-module-replacement/))
+* [TypeScript, Fastify, Webpack and React HRM example](./examples/react) (uses [`ReactRefreshWebpackPlugin`](https://github.com/pmmmwh/react-refresh-webpack-plugin))
 
 <a name="user-content-fastify-webpack-hot-difference-from-webpack-dev-server-and-webpack-hot-middleware"></a>
 <a name="fastify-webpack-hot-difference-from-webpack-dev-server-and-webpack-hot-middleware"></a>

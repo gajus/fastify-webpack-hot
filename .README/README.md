@@ -8,7 +8,15 @@ A [Fastify](https://github.com/fastify/fastify) plugin for serving files emitted
 
 {"gitdown": "contents"}
 
-## Basic HMR Setup
+## Recipes
+
+### Basic HMR Setup
+
+All you need to enable [Webpack Hot Module Replacement](https://webpack.js.org/api/hot-module-replacement/) is:
+
+* Register `fastify-webpack-hot` Fastify plugin
+* Enable `HotModuleReplacementPlugin` Webpack plugin
+* Prepend `fastify-webpack-hot/client` entry script
 
 ```ts
 import webpack from 'webpack';
@@ -33,12 +41,7 @@ void app.register(fastifyWebpackHot, {
 
 ```
 
-## Examples
-
-* [TypeScript, Fastify and Webpack HRM example](./examples/webpack) (uses [Webpack Hot Module Replacement API](https://webpack.js.org/api/hot-module-replacement/))
-* [TypeScript, Fastify, Webpack and React HRM example](./examples/react) (uses [`ReactRefreshWebpackPlugin`](https://github.com/pmmmwh/react-refresh-webpack-plugin))
-
-## Recipes
+For more thorough instructions, refer to the [examples](#examples).
 
 ### Accessing Webpack Stats
 
@@ -111,6 +114,11 @@ new CompressionPlugin({
 ```
 
 Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
+
+## Examples
+
+* [TypeScript, Fastify and Webpack HRM example](./examples/webpack) (uses [Webpack Hot Module Replacement API](https://webpack.js.org/api/hot-module-replacement/))
+* [TypeScript, Fastify, Webpack and React HRM example](./examples/react) (uses [`ReactRefreshWebpackPlugin`](https://github.com/pmmmwh/react-refresh-webpack-plugin))
 
 ## Difference from `webpack-dev-server` and `webpack-hot-middleware`
 
