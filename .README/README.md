@@ -115,8 +115,6 @@ new CompressionPlugin({
 })
 ```
 
-Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
-
 ## Project Setup Examples
 
 These are complete project setup examples that you can run locally to evaluate `fastify-webpack-hot` plugin:

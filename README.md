@@ -138,8 +138,6 @@ new CompressionPlugin({
 })
 ```
 
-Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
-
 <a name="user-content-fastify-webpack-hot-project-setup-examples"></a>
 <a name="fastify-webpack-hot-project-setup-examples"></a>
 ## Project Setup Examples
