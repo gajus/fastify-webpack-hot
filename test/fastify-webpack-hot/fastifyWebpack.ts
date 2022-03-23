@@ -17,6 +17,9 @@ import webpack from 'webpack';
 import {
   fastifyWebpackHot,
 } from '../../src';
+import type {
+  SyncEvent,
+} from '../../src/types';
 
 test('builds and serves bundle', async (t) => {
   const app = createFastify();
@@ -143,7 +146,7 @@ test('logs modified files', async (t) => {
     return message;
   });
 
-  fs.utimesSync(path.resolve(__dirname, '../fixtures/index.js'), new Date(), new Date());
+  await fs.utimes(path.resolve(__dirname, '../fixtures/index.js'), new Date(), new Date());
 
   await setTimeout(1_000);
 
@@ -156,4 +159,52 @@ test('logs modified files', async (t) => {
   }
 
   t.true(Array.isArray(modifiedFilesLogMessage.context.modifiedFiles));
+});
+
+test('__fastify_webpack_hot pushes updates', async (t) => {
+  const app = createFastify();
+
+  const compiler = webpack({
+    entry: path.resolve(__dirname, '../fixtures/index.js'),
+    output: {
+      filename: 'main.js',
+      path: path.resolve(__dirname, '/dist'),
+      publicPath: '/',
+    },
+  });
+
+  void app.register(fastifyWebpackHot, {
+    compiler,
+  });
+
+  const address = await app.listen(0);
+
+  const stream = got.stream(address + '/__fastify_webpack_hot');
+
+  const syncEvents: SyncEvent[] = [];
+
+  stream.on('data', (data) => {
+    if (data.toString().startsWith('event: sync')) {
+      const syncEvent = JSON.parse(data.toString().split('data: ')[1]);
+
+      syncEvents.push(syncEvent);
+    }
+  });
+
+  await fs.utimes(path.resolve(__dirname, '../fixtures/index.js'), new Date(), new Date());
+
+  await setTimeout(1_000);
+
+  stream.destroy();
+
+  t.is(syncEvents.length, 1);
+
+  t.like(syncEvents[0], {
+    errors: [],
+    hash: '673c6c371ec5fcb8e982',
+    modules: {
+      undefined: './test/fixtures/index.js',
+    },
+    warnings: [],
+  });
 });
