@@ -6,6 +6,10 @@
 
 A [Fastify](https://github.com/fastify/fastify) plugin for serving files emitted by [Webpack](https://github.com/webpack/webpack) with Hot Module Replacement (HMR).
 
+![fastify-webpack-hot in action](./.README/fastify-webpack-hot.gif)
+
+(`fastify-webpack-hot` immediately propagates hot updates to the server and browser.)
+
 {"gitdown": "contents"}
 
 ## Recipes
