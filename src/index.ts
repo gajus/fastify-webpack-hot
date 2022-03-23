@@ -28,6 +28,7 @@ import type {
   SyncEvent,
 } from './types';
 import {
+  canRead,
   defer,
   formatServerEvent,
   getFilenameFromUrl,
@@ -168,14 +169,14 @@ export const fastifyWebpackHot = fp<Configuration>(async (fastify, options) => {
       const negotiator = new Negotiator(request.raw);
       const encodings = negotiator.encodings();
 
-      if (encodings.includes('br') && outputFileSystem.existsSync(fileName + '.br')) {
+      if (encodings.includes('br') && await canRead(outputFileSystem, fileName + '.br')) {
         void reply.header('content-encoding', 'br');
-        void reply.send(outputFileSystem.readFileSync(fileName + '.br'));
-      } else if (encodings.includes('gzip') && outputFileSystem.existsSync(fileName + '.gz')) {
+        void reply.send(await outputFileSystem.promises.readFile(fileName + '.br'));
+      } else if (encodings.includes('gzip') && await canRead(outputFileSystem, fileName + '.gz')) {
         void reply.header('content-encoding', 'gzip');
-        void reply.send(outputFileSystem.readFileSync(fileName + '.gz'));
+        void reply.send(await outputFileSystem.promises.readFile(fileName + '.gz'));
       } else {
-        void reply.send(outputFileSystem.readFileSync(fileName));
+        void reply.send(await outputFileSystem.promises.readFile(fileName));
       }
     }
   });

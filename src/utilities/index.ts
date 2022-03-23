@@ -1,4 +1,7 @@
 export {
+  canRead,
+} from './canRead';
+export {
   defer,
 } from './defer';
 export {
