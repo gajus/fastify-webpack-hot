@@ -1,6 +1,7 @@
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: deploy
     name: Test
     steps:
       - name: setup repository
