@@ -112,7 +112,7 @@ export const fastifyWebpackHot = fp<Configuration>(async (fastify, options) => {
     }
   });
 
-  fastify.get('/hmr', (request, reply) => {
+  fastify.get('/__fastify_webpack_hot', (request, reply) => {
     const headers = {
       'cache-control': 'no-store',
       'content-type': 'text/event-stream',

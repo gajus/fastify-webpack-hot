@@ -3,7 +3,7 @@
 const main = () => {
   const hot = import.meta.webpackHot;
 
-  const eventSource = new EventSource('/hmr');
+  const eventSource = new EventSource('/__fastify_webpack_hot');
 
   hot.addStatusHandler((status) => {
     console.log(status);
