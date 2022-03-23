@@ -177,6 +177,8 @@ Afterwards, to output all logs set `ROARR_LOG=true` in `localStorage`:
 localStorage.setItem('ROARR_LOG', 'true');
 ```
 
+Note: Ensure that you have enabled verbose logs in DevTools to see all `fastify-webpack-hot` logs.
+
 <a name="user-content-fastify-webpack-hot-troubleshooting-node-js-logging"></a>
 <a name="fastify-webpack-hot-troubleshooting-node-js-logging"></a>
 ### Node.js Logging

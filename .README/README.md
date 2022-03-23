@@ -146,6 +146,8 @@ Afterwards, to output all logs set `ROARR_LOG=true` in `localStorage`:
 localStorage.setItem('ROARR_LOG', 'true');
 ```
 
+Note: Ensure that you have enabled verbose logs in DevTools to see all `fastify-webpack-hot` logs.
+
 ### Node.js Logging
 
 This project uses [`roarr`](https://www.npmjs.com/package/roarr) logger to output the program's state.
