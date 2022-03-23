@@ -5,6 +5,9 @@ import {
   createFsFromVolume,
   Volume,
 } from 'memfs';
+import type {
+  IFs,
+} from 'memfs';
 import mime from 'mime-types';
 import Negotiator from 'negotiator';
 import {
@@ -47,7 +50,8 @@ declare module 'fastify' {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface FastifyRequest {
     webpack: {
-      stats: Stats,
+      outputFileSystem: IFs,
+      stats?: Stats,
     };
   }
 }
@@ -132,6 +136,10 @@ export const fastifyWebpackHot = fp<Configuration>(async (fastify, options) => {
   });
 
   fastify.addHook('onRequest', async (request, reply) => {
+    request.webpack = {
+      outputFileSystem,
+    };
+
     if (request.method !== 'GET' && request.method !== 'HEAD') {
       return;
     }
@@ -144,6 +152,7 @@ export const fastifyWebpackHot = fp<Configuration>(async (fastify, options) => {
 
     // eslint-disable-next-line require-atomic-updates
     request.webpack = {
+      outputFileSystem,
       stats,
     };
 
