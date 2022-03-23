@@ -1,4 +1,4 @@
-# fastify-webpack-hot
+# fastify-webpack-hot 🔥
 
 [![Travis build status](http://img.shields.io/travis/gajus/fastify-webpack-hot/master.svg?style=flat-square)](https://travis-ci.com/gajus/fastify-webpack-hot)
 [![Coveralls](https://img.shields.io/coveralls/gajus/fastify-webpack-hot.svg?style=flat-square)](https://coveralls.io/github/gajus/fastify-webpack-hot)
