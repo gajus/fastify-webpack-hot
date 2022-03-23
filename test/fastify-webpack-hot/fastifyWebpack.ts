@@ -127,16 +127,6 @@ test('logs modified files', async (t) => {
       path: path.resolve(__dirname, '/dist'),
       publicPath: '/',
     },
-    plugins: [
-      new CompressionPlugin({
-        algorithm: 'gzip',
-        deleteOriginalAssets: false,
-        filename: '[path][base].gz',
-        minRatio: Number.POSITIVE_INFINITY,
-        test: /\.js$/u,
-        threshold: 0,
-      }),
-    ],
   });
 
   void app.register(fastifyWebpackHot, {
