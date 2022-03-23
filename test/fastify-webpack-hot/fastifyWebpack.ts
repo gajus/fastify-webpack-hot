@@ -15,7 +15,7 @@ import {
 } from 'roarr';
 import webpack from 'webpack';
 import {
-  fastifyWebpack,
+  fastifyWebpackHot,
 } from '../../src';
 
 test('builds and serves bundle', async (t) => {
@@ -30,7 +30,7 @@ test('builds and serves bundle', async (t) => {
     },
   });
 
-  void app.register(fastifyWebpack, {
+  void app.register(fastifyWebpackHot, {
     compiler,
   });
 
@@ -65,7 +65,7 @@ test('serves brotli compressed assets when available', async (t) => {
     ],
   });
 
-  void app.register(fastifyWebpack, {
+  void app.register(fastifyWebpackHot, {
     compiler,
   });
 
@@ -102,7 +102,7 @@ test('serves gzip compressed assets when available', async (t) => {
     ],
   });
 
-  void app.register(fastifyWebpack, {
+  void app.register(fastifyWebpackHot, {
     compiler,
   });
 
@@ -139,7 +139,7 @@ test('logs modified files', async (t) => {
     ],
   });
 
-  void app.register(fastifyWebpack, {
+  void app.register(fastifyWebpackHot, {
     compiler,
   });
 

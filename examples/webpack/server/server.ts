@@ -2,7 +2,7 @@ import path from 'path';
 import fastify from 'fastify';
 import webpack from 'webpack';
 import {
-  fastifyWebpack,
+  fastifyWebpackHot,
 } from '../../../dist/src';
 
 const main = async () => {
@@ -48,7 +48,7 @@ const main = async () => {
     },
   });
 
-  void app.register(fastifyWebpack, {
+  void app.register(fastifyWebpackHot, {
     compiler,
   });
 

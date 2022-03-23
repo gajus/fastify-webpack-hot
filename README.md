@@ -15,7 +15,7 @@ A [Fastify](https://github.com/fastify/fastify) plugin for serving files emitted
 ```ts
 import webpack from 'webpack';
 import {
-  fastifyWebpack,
+  fastifyWebpackHot,
 } from 'fastify-webpack-hot';
 
 const compiler = webpack({
@@ -29,7 +29,7 @@ const compiler = webpack({
   ],
 });
 
-void app.register(fastifyWebpack, {
+void app.register(fastifyWebpackHot, {
   compiler,
 });
 

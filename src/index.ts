@@ -56,7 +56,7 @@ type Configuration = {
   compiler: Compiler,
 };
 
-export const fastifyWebpack = fp<Configuration>(async (fastify, options) => {
+export const fastifyWebpackHot = fp<Configuration>(async (fastify, options) => {
   const eventEmitter = new EventEmitter() as TypedEmitter<EventHandlers>;
 
   const {
