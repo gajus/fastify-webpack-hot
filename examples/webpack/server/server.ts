@@ -11,8 +11,9 @@ const main = async () => {
   const compiler = webpack({
     devtool: 'source-map',
     entry: [
+      '@roarr/browser-log-writer/init',
       // This would be `fastify-webpack-hot/client` in a regular application.
-      path.resolve(__dirname, '../../../dist/client.js'),
+      path.resolve(__dirname, '../../../client.js'),
       path.resolve(__dirname, '../app/main.ts'),
     ],
     mode: 'development',

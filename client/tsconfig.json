@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "es2022",
+    "moduleResolution": "node",
     "lib": [
       "dom"
     ]

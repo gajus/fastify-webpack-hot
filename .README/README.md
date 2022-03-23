@@ -127,6 +127,22 @@ All of the above are relatively straightforward to implement, however, I didn't 
 
 ## Troubleshooting
 
+### Browser Logging
+
+This project uses [`roarr`](https://www.npmjs.com/package/roarr) logger to output the application's state.
+
+In order to output logs in browser, you need to provide output interface. The easiest way of doing it is by including [`@roarr/browser-log-writer`](https://github.com/gajus/roarr-browser-log-writer) in your project. 
+
+```ts
+import '@roarr/browser-log-writer/init';
+```
+
+Afterwards, to output all logs set `ROARR_LOG=true` in `localStorage`:
+
+```ts
+localStorage.setItem('ROARR_LOG', 'true');
+```
+
 ### Node.js Logging
 
 This project uses [`roarr`](https://www.npmjs.com/package/roarr) logger to output the program's state.
