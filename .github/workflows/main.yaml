@@ -1,0 +1,23 @@
+jobs:
+  test:
+    name: Test
+    steps:
+      - name: setup repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run build
+      - run: npx semantic-release
+    timeout-minutes: 10
+name: Test, build and release
+on:
+  push:
+    branches:
+      - main

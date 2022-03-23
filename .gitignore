@@ -8,6 +8,7 @@ node_modules
 !.eslintignore
 !.eslintrc
 !.eslintrc.js
+!.github
 !.gitignore
 !.npmignore
 !.README
