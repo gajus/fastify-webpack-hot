@@ -12,5 +12,6 @@ node_modules
 !.gitignore
 !.npmignore
 !.README
+!.releaserc
 !.travis.yml
 /package-lock.json
