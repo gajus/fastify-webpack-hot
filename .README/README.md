@@ -43,7 +43,7 @@ void app.register(fastifyWebpackHot, {
 
 ```
 
-For more thorough instructions, refer to the [examples](#examples).
+For more thorough instructions, refer to the [Project Setup Examples](#project-setup-examples).
 
 ### Accessing Webpack Stats
 
@@ -117,7 +117,9 @@ new CompressionPlugin({
 
 Note: You may also try using `fastify-compress`, however, beware of the outstanding issue that may cause the server to crash ([fastify-compress#215](https://github.com/fastify/fastify-compress/issues/215)).
 
-## Examples
+## Project Setup Examples
+
+These are complete project setup examples that you can run locally to evaluate `fastify-webpack-hot` plugin:
 
 * [TypeScript, Fastify and Webpack HRM example](./examples/webpack) (uses [Webpack Hot Module Replacement API](https://webpack.js.org/api/hot-module-replacement/))
 * [TypeScript, Fastify, Webpack and React HRM example](./examples/react) (uses [`ReactRefreshWebpackPlugin`](https://github.com/pmmmwh/react-refresh-webpack-plugin))
