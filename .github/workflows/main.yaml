@@ -1,5 +1,6 @@
 jobs:
   test:
+    runs-on: ubuntu-latest
     name: Test
     steps:
       - name: setup repository
