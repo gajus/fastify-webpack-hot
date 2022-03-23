@@ -73,7 +73,7 @@
     "build": "rm -fr ./dist && tsc && webpack",
     "generate-readme": "gitdown ./.README/README.md --output-file ./README.md",
     "lint": "eslint ./src ./test && tsc --noEmit",
-    "test": "NODE_ENV=test ava --serial --verbose"
+    "test": "ROARR_LOG=1 NODE_ENV=test ava --serial --verbose"
   },
   "typings": "./dist/src/index.d.ts",
   "version": "1.0.0"

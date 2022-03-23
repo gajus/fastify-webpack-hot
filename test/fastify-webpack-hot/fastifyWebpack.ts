@@ -158,7 +158,7 @@ test('logs modified files', async (t) => {
   await setTimeout(1_000);
 
   const modifiedFilesLogMessage = messages.find((message) => {
-    return message.message === 'modified files';
+    return message.message === 'building a webpack bundle' && message.context.modifiedFiles;
   });
 
   if (!modifiedFilesLogMessage) {
