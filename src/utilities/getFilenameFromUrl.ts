@@ -17,7 +17,7 @@ const log = Logger.child({
   namespace: 'getFilenameFromUrl',
 });
 
-export const getFilenameFromUrl = (outputFileSystem, stats, url) => {
+export const getFilenameFromUrl = async (outputFileSystem, stats, url) => {
   let foundFilename = null;
   let urlObject;
 
@@ -68,7 +68,7 @@ export const getFilenameFromUrl = (outputFileSystem, stats, url) => {
     let fsStats;
 
     try {
-      fsStats = outputFileSystem.statSync(filename);
+      fsStats = await outputFileSystem.promises.stat(filename);
     } catch (error) {
       if (error.message.includes('no such file or directory')) {
         log.trace('no such file or directory %s', filename);

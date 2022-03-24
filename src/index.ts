@@ -157,7 +157,7 @@ export const fastifyWebpackHot = fp<Configuration>(async (fastify, options) => {
       stats,
     };
 
-    const fileName = getFilenameFromUrl(outputFileSystem, stats, request.url);
+    const fileName = await getFilenameFromUrl(outputFileSystem, stats, request.url);
 
     if (fileName) {
       const contentType = mime.contentType(path.extname(fileName));
