@@ -3,7 +3,7 @@ import fastify from 'fastify';
 import webpack from 'webpack';
 import {
   fastifyWebpackHot,
-} from '../../../dist/src';
+} from '../../../src';
 
 const main = async () => {
   const app = fastify();

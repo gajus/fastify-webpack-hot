@@ -5,7 +5,7 @@ import ReactRefreshTypeScript from 'react-refresh-typescript';
 import webpack from 'webpack';
 import {
   fastifyWebpackHot,
-} from '../../../dist/src';
+} from '../../../src';
 
 const main = async () => {
   const app = fastify();
